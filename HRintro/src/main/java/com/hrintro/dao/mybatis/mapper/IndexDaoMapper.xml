@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hrintro.dao.IndexDao">
+
+  <select id="getName" resultType="com.hrintro.entity.StudentList">
+  	SELECT no,name FROM student 
+	ORDER BY name ASC;
+  </select>
+  
+  <select id="getSerName" resultType="com.hrintro.entity.StudentList">
+  	SELECT no,name FROM student 
+  	WHERE name = #{name}
+	ORDER BY name ASC;
+  </select>
+  
+  <select id="getList" resultType="com.hrintro.entity.StudentList">
+  	SELECT * FROM student 
+  	WHERE no = #{no}
+  </select>
+  
+  <update id="setinfo">
+  	UPDATE student SET name = #{name},
+  	education = #{education},
+  	address = #{address}
+  	WHERE no = #{no}
+  </update>
+  
+  <insert id="addinfo">
+  	INSERT INTO student (name, education, address)
+  	VALUE (#{name},#{education},#{address})
+  </insert>
+  
+  <delete id="delete">
+  	DELETE FROM student 
+  	WHERE no = #{no};
+  </delete>
+  
+</mapper>
